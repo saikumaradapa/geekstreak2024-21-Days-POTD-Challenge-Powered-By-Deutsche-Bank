@@ -1,0 +1,17 @@
+Problem Link : https://www.geeksforgeeks.org/problems/mirror-tree/1
+
+class Solution:
+    #Function to convert a binary tree into its mirror tree.
+    def mirror(self,root):
+        if not root:
+            return root
+        
+        root.left, root.right = root.right, root.left
+        self.mirror(root.left)
+        self.mirror(root.right)
+        
+        return root
+        
+''' time complexity : O(n)
+    space complexity : O(h)
+'''
