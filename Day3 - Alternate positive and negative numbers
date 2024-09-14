@@ -1,0 +1,29 @@
+Problem Link : https://www.geeksforgeeks.org/problems/array-of-alternate-ve-and-ve-nos1401/1
+
+class Solution:
+    def rearrange(self,arr):
+        pos, neg = [], []
+        
+        for num in arr:
+            if num < 0:
+                neg.append(num)
+            else:
+                pos.append(num)
+        
+        idx, n = 0, len(arr)
+        i, j = 0, 0 
+        
+        while idx < n:
+            if i < len(pos):
+                arr[idx] = pos[i]
+                idx += 1 
+                i += 1
+            if j < len(neg):
+                arr[idx] = neg[j]
+                idx += 1 
+                j += 1
+        return arr
+        
+''' time complexity : O(n)
+    space complexity : O(n)
+'''
