@@ -1,0 +1,45 @@
+Problem Link : https://www.geeksforgeeks.org/problems/binary-tree-to-dll/1
+
+
+
+'''
+class Node:
+    """ Class Node """
+    def __init__(self, value):
+        self.left = None
+        self.data = value
+        self.right = None
+'''
+
+#Function to convert a binary tree to doubly linked list.
+class Solution:
+    def bToDLL(self,root):
+        head = None 
+        
+        dummy = Node(-1)
+        
+        def dfs(root, curr):
+            nonlocal head
+            if root:
+                left, right = root.left, root.right
+                
+                dfs(left, curr)
+                
+                if not head:
+                    head = root
+                curr[0].right = root 
+                root.left = curr[0]
+                curr[0] = root
+                    
+                dfs(right, curr)
+                
+        curr = [dummy]
+        dfs(root, curr)
+        curr[0].right = None 
+        dummy.right = None 
+        head.left = None 
+        return head
+
+''' time complexity : O(n)
+    space complexity : O(h)
+'''
