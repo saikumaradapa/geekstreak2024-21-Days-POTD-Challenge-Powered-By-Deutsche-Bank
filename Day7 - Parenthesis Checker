@@ -1,0 +1,27 @@
+Problem Link : https://www.geeksforgeeks.org/problems/parenthesis-checker2744/1
+
+
+class Solution:
+    
+    #Function to check if brackets are balanced or not.
+    def ispar(self,x):
+        stack = []
+        dit = {
+            ']' : '[', 
+            ')' : '(', 
+            '}' : '{'
+        }
+        
+        for ch in x:
+            if ch not in dit.keys():
+                stack.append(ch)
+            elif not stack or dit[ch] != stack[-1]:
+                return False
+            else:
+                stack.pop()
+        
+        return len(stack) == 0
+        
+''' time complexity : O(n)
+    space complexity : O(n)
+'''
