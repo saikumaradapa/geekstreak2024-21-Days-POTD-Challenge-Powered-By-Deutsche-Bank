@@ -1,0 +1,26 @@
+Problem Link : https://www.geeksforgeeks.org/problems/reverse-words-in-a-given-string5459/1
+
+
+class Solution:
+    
+    #Function to reverse words in a given string.
+    def reverseWords(self,str):
+        res = ""
+        
+        idx = len(str)-1
+        while idx >= 0:
+            curr = ""
+            while idx >= 0 and str[idx] != '.':
+                curr = str[idx] + curr
+                idx -= 1 
+            res += curr
+            if idx >= 0:
+                res += '.'
+            idx -= 1
+                
+            
+        return res
+
+''' time complexity : O(n)
+    space complexity : O(n)
+'''
