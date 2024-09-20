@@ -1,0 +1,17 @@
+Problem Link : https://www.geeksforgeeks.org/problems/facing-the-sun2126/1
+
+class Solution:
+    # Returns count buildings that can see sunlight
+    def countBuildings(self, height):
+        res = 0 
+        max_height = -1 
+        
+        for h in height:
+            if h > max_height:
+                res += 1
+                max_height = h 
+        return res 
+        
+''' time complexity : O(n)
+    space complexity : O(1)
+'''
