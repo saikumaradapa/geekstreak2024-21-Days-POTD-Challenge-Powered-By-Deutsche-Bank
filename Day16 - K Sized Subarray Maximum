@@ -1,0 +1,28 @@
+
+
+class Solution:
+    
+    #Function to find maximum of each subarray of size k.
+    def max_of_subarrays(self,k,arr):
+
+        # Deque to store indexes of useful elements in every window
+        dq = deque()
+        result = []
+    
+        for i in range(len(arr)):
+            # Remove elements not in the current window
+            if dq and dq[0] <= i - k:
+                dq.popleft()
+    
+            # Remove elements from the deque that are smaller than the current element
+            while dq and arr[dq[-1]] <= arr[i]:
+                dq.pop()
+    
+            # Add current element at the back of the deque
+            dq.append(i)
+    
+            # Start adding maximum of each window to the result
+            if i >= k - 1:
+                result.append(arr[dq[0]])
+    
+        return result
