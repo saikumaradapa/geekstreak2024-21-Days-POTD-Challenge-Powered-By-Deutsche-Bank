@@ -1,0 +1,18 @@
+
+
+class Solution:
+    def minimizeCost(self, k, arr):
+        n = len(arr)
+        # Initialize DP array with infinity
+        dp = [float('inf')] * n
+        # Starting point
+        dp[0] = 0
+        
+        # Fill dp array using the recurrence relation
+        for i in range(n):
+            # Check all jumps from stone i to stones within a distance of k
+            for j in range(i + 1, min(i + k + 1, n)):
+                dp[j] = min(dp[j], dp[i] + abs(arr[i] - arr[j]))
+        
+        # Return the minimum cost to reach the last stone
+        return dp[-1]
