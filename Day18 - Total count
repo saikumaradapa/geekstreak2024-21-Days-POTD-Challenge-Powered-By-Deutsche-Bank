@@ -1,0 +1,13 @@
+Problem Link : https://www.geeksforgeeks.org/problems/total-count2415/1
+
+class Solution:
+    def totalCount(self, k, arr):
+        res = 0 
+        for n in arr:
+            res += (n // k) + bool(n % k)
+        return res
+        
+        
+''' time complexity : O(n)
+    space complexity : O(1)
+'''
