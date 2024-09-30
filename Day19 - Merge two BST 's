@@ -1,0 +1,41 @@
+Problem Link : https://www.geeksforgeeks.org/problems/merge-two-bst-s/1
+
+class Solution:
+    def merge(self, root1, root2):
+        res1, res2 = [], []
+        self.inorder(root1, res1)
+        self.inorder(root2, res2)
+        
+        merged_arr = self.merge_sorted_arr(res1, res2)
+        
+        return merged_arr      
+        
+    def inorder(self, root, arr):
+        if root:
+            self.inorder(root.left, arr)
+            arr.append(root.data)
+            self.inorder(root.right, arr)
+        
+    def merge_sorted_arr(self, arr1, arr2):
+        arr = []
+        i, j = 0, 0
+        while i < len(arr1) and j < len(arr2):
+            if arr1[i] <= arr2[j]:
+                arr.append(arr1[i])
+                i += 1
+            else:
+                arr.append(arr2[j])
+                j += 1
+        
+        while i < len(arr1):
+            arr.append(arr1[i])
+            i += 1
+        while j < len(arr2):
+            arr.append(arr2[j])
+            j += 1
+        
+        return arr
+   
+''' time complexity : O(n + m)        
+    space complexity : O(n + m)
+'''
