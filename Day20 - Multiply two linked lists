@@ -1,0 +1,22 @@
+Problem Link : https://www.geeksforgeeks.org/problems/multiply-two-linked-lists/1
+
+
+class Solution:
+    def multiply_two_lists(self, first, second):
+        l1 = l2 = 0 
+        mod = 1000000007
+        
+        while first:
+            l1 = l1 * 10 + first.data
+            first = first.next
+        
+        while second:
+            l2 = l2 * 10 + second.data
+            second = second.next
+        
+        res = (l1 * l2) % mod 
+        return res
+                
+''' time complexity : O(n)
+    space complexity : O(1)
+'''
