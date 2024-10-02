@@ -1,0 +1,14 @@
+Proble Link : https://www.geeksforgeeks.org/problems/rotate-and-delete-1587115621/1
+
+class Solution:
+    def rotateDelete(self,  arr):
+        n=len(arr)
+        k=1
+        while len(arr)>1:
+            arr.insert(0,arr.pop())
+            index=len(arr)-k
+            if index<0:
+                index=0
+            arr.pop(index)
+            k+=1
+        return arr[0]
