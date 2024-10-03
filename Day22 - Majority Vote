@@ -1,0 +1,23 @@
+Problem Link : https://www.geeksforgeeks.org/problems/majority-vote/1
+
+class Solution:
+    def findMajority(self, nums):
+        freq = dict()
+        
+        for n in nums:
+            if n in freq:
+                freq[n] += 1
+            else:
+                freq[n] = 1
+        
+        nums_size = len(nums)
+        res = []
+        for n in set(nums):
+            if freq[n] > nums_size // 3:
+                res.append(n)
+        res.sort()
+        return res if res else [-1]
+        
+''' time complexity : O(n)
+    space complexity : O(n)
+'''
