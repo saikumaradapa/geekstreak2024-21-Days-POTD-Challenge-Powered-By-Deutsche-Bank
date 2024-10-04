@@ -1,0 +1,64 @@
+Problem Link : https://www.geeksforgeeks.org/problems/deletion-and-reverse-in-linked-list/1
+
+class Solution:
+    # Function to reverse a circular linked list
+    def reverse(self, head):
+        if not head or not head.next:
+            return head
+        
+        prev = None
+        current = head
+        next_node = None
+        
+        # Traverse the list and reverse the links
+        while True:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+            
+            # Stop when we come back to the head
+            if current == head:
+                break
+        
+        # Fix the circular connection
+        head.next = prev
+        head = prev
+        
+        return head
+        
+    # Function to delete a node from the circular linked list
+    def deleteNode(self, head, key):
+        if not head:
+            return None
+        
+        # Handle deletion when the head node contains the key
+        if head.data == key:
+            # Special case: only one node in the list
+            if head.next == head:
+                return None
+            
+            # Find the last node (to maintain circular property)
+            last = head
+            while last.next != head:
+                last = last.next
+                
+            # Point last node to the next of head, effectively deleting the head node
+            last.next = head.next
+            head = head.next  # Move head to next node
+        
+        else:
+            # Find the key in the list
+            current = head
+            prev = None
+            while current.next != head:
+                if current.data == key:
+                    break
+                prev = current
+                current = current.next
+            
+            # Key found, delete the node
+            if current.data == key:
+                prev.next = current.next
+        
+        return head
