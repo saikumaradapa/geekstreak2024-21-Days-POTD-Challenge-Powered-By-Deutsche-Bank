@@ -1,0 +1,19 @@
+Problem Link : https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
+
+
+
+class Solution:
+    def findTwoElement( self,arr): 
+        hasSet = set()
+        n = len(arr)
+        missing, repeating = None, None 
+        
+        s = 0 
+        for i in range(n):
+            if arr[i] in hasSet:
+                repeating = arr[i]
+            hasSet.add(arr[i])
+            s += arr[i]
+        
+        missing = (n *  (n + 1)) // 2 - (s - repeating)
+        return [repeating, missing]                
